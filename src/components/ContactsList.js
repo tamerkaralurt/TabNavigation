@@ -56,9 +56,15 @@ export default class ContactsList extends Component {
         });
     };
 
+    gotoDetail = user => {
+        this.props.navigation.navigate('ContactDetail', {
+            user
+        });
+    };
+
     renderContactsItem = ({item, index}) => {
         return (
-            <TouchableOpacity style={[styles.itemContainer, {backgroundColor: index % 2 === 1 ? '#fafafa' : ''}]}>
+            <TouchableOpacity onPress={() => this.gotoDetail(item)} style={[styles.itemContainer, {backgroundColor: index % 2 === 1 ? '#fafafa' : ''}]}>
                 <Image
                     style={styles.avatar}
                     source={{uri: item.picture.thumbnail}}/>
