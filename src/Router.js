@@ -8,6 +8,7 @@ import HomeScreen from './screens/Home';
 import ContactScreen from './screens/Contact';
 import ContactDetailScreen from './screens/ContactDetail';
 import SettingsScreen from './screens/Settings';
+import SettingsModal from "./components/SettingsModal";
 
 const ContactStack = createStackNavigator({
     Contact: {
@@ -55,5 +56,16 @@ const TabNavigator = createBottomTabNavigator({
     },
     initialRouteName: 'Contact'
 });
+const ModalStack = createStackNavigator({
+    Tabs: {
+        screen: TabNavigator
+    },
+    SettingsModel: {
+        screen: SettingsModal
+    }
+},{
+    mode: 'model',
+    headerMode: 'none'
+});
 
-export default createAppContainer(TabNavigator);
+export default createAppContainer(ModalStack);
