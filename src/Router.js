@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {createStackNavigator, createBottomTabNavigator, createAppContainer, createMaterialTopTabNavigator} from "react-navigation";
+import {
+    createStackNavigator,
+    createAppContainer,
+    createBottomTabNavigator,
+    createDrawerNavigator
+} from "react-navigation"; // createBottomTabNavigator -> createMaterialTopTabNavigator
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -9,6 +14,7 @@ import ContactScreen from './screens/Contact';
 import ContactDetailScreen from './screens/ContactDetail';
 import SettingsScreen from './screens/Settings';
 import SettingsModal from "./components/SettingsModal";
+import DrawerMenu from "./components/DrawerMenu";
 
 const ContactStack = createStackNavigator({
     Contact: {
@@ -25,7 +31,7 @@ const ContactStack = createStackNavigator({
     }
 });
 
-const TabNavigator = createMaterialTopTabNavigator({ // createBottomTabNavigator -> createMaterialTopTabNavigator
+const TabNavigator = createBottomTabNavigator({ // createBottomTabNavigator -> createMaterialTopTabNavigator
     Home: {
         screen: HomeScreen,
         navigationOptions: {
@@ -59,7 +65,7 @@ const TabNavigator = createMaterialTopTabNavigator({ // createBottomTabNavigator
             color: 'white'
         }
     },
-    initialRouteName: 'Contact'
+    initialRouteName: 'Home' //Başlangıç Sayfası Ayarlandı
 });
 const ModalStack = createStackNavigator({
     Tabs: {
@@ -73,4 +79,12 @@ const ModalStack = createStackNavigator({
     headerMode: 'none'
 });
 
-export default createAppContainer(ModalStack);
+const DrawerNavigator = createDrawerNavigator({
+    ModalStack:{
+        screen: ModalStack,
+    },
+},{
+    contentComponent: DrawerMenu
+});
+
+export default createAppContainer(DrawerNavigator);

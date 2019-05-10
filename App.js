@@ -5,8 +5,10 @@ import Router from './src/Router';
 export default class App extends Component {
     render() {
         return (
-            <Fragment> <!-- Fragment Oluşturuldu -->
-                <StatusBar hidden={true}/> <!-- Üstteki Pil, Saat olan barı gizliyor. -->
+            // <!-- Fragment Eklendi -->
+            // <!-- StatusBar Pil ve Saat gibi nesnelerin olduğu bar gizlendi -->
+            <Fragment>
+                <StatusBar hidden={true}/>
                 <Router/>
             </Fragment>
         );
