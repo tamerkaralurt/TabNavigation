@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-export default class Home extends Component {
+export default class Contact extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Home Screen</Text>
+                <Text>Contact Screen</Text>
             </View>
         );
     }
