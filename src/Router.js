@@ -1,12 +1,28 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {createBottomTabNavigator, createAppContainer} from "react-navigation";
+import {createStackNavigator, createBottomTabNavigator, createAppContainer} from "react-navigation";
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './screens/Home';
 import ContactScreen from './screens/Contact';
+import ContactDetailScreen from './screens/ContactDetail';
 import SettingsScreen from './screens/Settings';
+
+const ContactStack = createStackNavigator({
+    Contact: {
+        screen: ContactScreen,
+        navigationOptions:{
+            title: 'İletişim'
+        }
+    },
+    ContactDetail: {
+        screen: ContactDetailScreen,
+        navigationOptions: {
+            title: 'İletişim Detayı'
+        }
+    }
+});
 
 const TabNavigator = createBottomTabNavigator({
     Home: {
@@ -17,7 +33,7 @@ const TabNavigator = createBottomTabNavigator({
         }
     },
     Contact: {
-        screen: ContactScreen,
+        screen: ContactStack,
         navigationOptions: {
             tabBarLabel: 'İletişim',
             tabBarIcon: ({tintColor}) => (<Icon name="ios-contact" size={22} color={tintColor}/>)
