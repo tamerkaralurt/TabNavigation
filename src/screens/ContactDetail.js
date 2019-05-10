@@ -9,10 +9,18 @@ export default class ContactDetail extends Component {
         }
     };
 
+    state = {
+      name: ''
+    };
+
     render() {
+        const {name, gender} = this.props.navigation.getParam('user');
+        console.log(name);
         return (
             <View style={styles.container}>
-                <Text>ContactDetail Screen</Text>
+                <Text style={{color: 'black'}}>
+                    {name.first} {name.last} {gender}
+                </Text>
             </View>
         );
     }
