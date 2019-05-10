@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {createStackNavigator, createBottomTabNavigator, createAppContainer} from "react-navigation";
+import {createStackNavigator, createBottomTabNavigator, createAppContainer, createMaterialTopTabNavigator} from "react-navigation";
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -25,7 +25,7 @@ const ContactStack = createStackNavigator({
     }
 });
 
-const TabNavigator = createBottomTabNavigator({
+const TabNavigator = createMaterialTopTabNavigator({ // createBottomTabNavigator -> createMaterialTopTabNavigator
     Home: {
         screen: HomeScreen,
         navigationOptions: {
@@ -52,7 +52,12 @@ const TabNavigator = createBottomTabNavigator({
         activeTintColor: 'white',
         activeBackgroundColor: 'red',
         inactiveTintColor: 'red',
-        inactiveBackgroundColor: 'white'
+        inactiveBackgroundColor: 'white',
+        // showLabel: false, //TabBardaki yazılar görünmesin sadece logolar görünsün.
+        style:{
+            backgroundColor: 'red', //genel tapbar'a arkaplan rengi veriyor.
+            color: 'white'
+        }
     },
     initialRouteName: 'Contact'
 });
